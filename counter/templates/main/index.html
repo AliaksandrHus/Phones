@@ -1,0 +1,18 @@
+{% extends 'main/icon.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="content">
+
+        <h1>Телефонный справочник</h1>
+        <p>База данных контактных номеров и абонентов.</p>
+        <p>В нашей базе {{ all_p }} записей!</p>
+        <form method="post">
+            {% csrf_token %}
+        <button value="rand" >Создать 10 случайных пользователей</button>
+        </form>
+
+    </div>
+{% endblock %}

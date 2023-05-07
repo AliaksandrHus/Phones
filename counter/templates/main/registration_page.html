@@ -1,0 +1,35 @@
+{% extends 'main/icon.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+    <div class="menu2">
+    <a href="{% url 'login_page' %}">ВОЙТИ НА САЙТ</a>
+    <a href="{% url 'registration_page' %}">РЕГИСТРАЦИЯ</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+
+    <h1>Регистрация нового пользователя</h1>
+
+        {% if error %}
+            <h3>{{ error }}</h3>
+        {% endif %}
+
+        <form method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                {{ registration_form.username }}<br>
+                {{ registration_form.email }}<br>
+                {{ registration_form.password }}<br>
+                {{ registration_form.password_confirmation }}<br>
+            <button type="submit">Войти</button>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

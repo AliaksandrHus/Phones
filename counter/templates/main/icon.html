@@ -1,0 +1,36 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
+</head>
+
+<body>
+
+  <div class="menu">
+    <a href="{% url 'home' %}">MAIN</a>
+    <a href="{% url 'phones_all' %}">ТЕЛЕФОННЫЙ СПРАВОЧНИК</a>
+    <a href="{% url 'user_home' %}">USER{% if request.user.is_authenticated %}<span class="dot-yes"> ● </span>{% else %}<span class="dot-no"> ● </span>{% endif %}</a>
+  </div>
+
+  <main>
+      {% block menu2%}
+      {% endblock %}
+  </main>
+
+  <main>
+      {% block content %}
+      {% endblock %}
+  </main>
+
+
+</body>
+</html>

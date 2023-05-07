@@ -1,0 +1,45 @@
+{% extends 'main/icon.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block menu2 %}
+
+
+
+    {% if request.user.is_authenticated %}
+
+    <div class="menu2">
+        <a href="{% url 'login_page' %}">КАБИНЕТ</a>
+        <a href="{% url 'logout_page' %}">ВЫЙТИ</a>
+    </div>
+
+    {% else %}
+
+    <div class="menu2">
+        <a href="{% url 'login_page' %}">ВОЙТИ НА САЙТ</a>
+        <a href="{% url 'registration_page' %}">РЕГИСТРАЦИЯ</a>
+    </div>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+
+    <h1>Авторизация</h1>
+
+        {% if error %}
+            <h3>{{ error }}</h3>
+        {% endif %}
+
+        <form method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                {{ login_form.username }}<br>
+                {{ login_form.password }}<br>
+                <button type="submit">Войти</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
